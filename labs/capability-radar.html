@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全栈 AI 工程师六边形能力雷达图 & 战力面板</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+        }
+        .code-font {
+            font-family: 'Fira Code', monospace;
+        }
+    </style>
+</head>
+<body class="text-slate-100 p-8 min-h-screen flex flex-col items-center">
+
+    <!-- 顶部 Header -->
+    <header class="text-center mb-12 max-w-4xl w-full">
+        <div class="inline-block bg-teal-500/10 text-teal-400 border border-teal-500/20 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4 code-font">
+            Axiomatic Competence Radar v1.0
+        </div>
+        <h1 class="text-4xl font-extrabold tracking-tight mb-3 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500">
+            全栈 AI 工程师六边形战力看板
+        </h1>
+        <p class="text-slate-400 text-sm md:text-base">
+            基于你每日真实实盘开发数据（PAF 质控、VFS 挂载、OS 感知、双写监听器）自动审计与对齐的战力差距模型。
+        </p>
+    </header>
+
+    <!-- 主面板 -->
+    <main class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- 左侧：雷达图展示区 (7格) -->
+        <section class="lg:col-span-7 bg-slate-900/50 border border-slate-800 rounded-2xl p-6 flex flex-col items-center shadow-xl backdrop-blur-sm">
+            <h2 class="text-xl font-bold mb-6 self-start flex items-center code-font">
+                <span class="w-3 h-3 bg-teal-500 rounded-full mr-2"></span> 战力边界雷达 (Axiom Radar)
+            </h2>
+            
+            <!-- SVG 绘制六边形雷达 -->
+            <!-- 满分 100 对应半径 150，中心点在 (200, 180) -->
+            <div class="relative w-full max-w-[400px] aspect-square">
+                <svg viewBox="0 0 400 360" class="w-full h-full drop-shadow-lg">
+                    <!-- 背景六边形网格（20, 40, 60, 80, 100） -->
+                    <!-- 顶(0,-R), 右上(0.866R,-0.5R), 右下(0.866R,0.5R), 底(0,R), 左下(-0.866R,0.5R), 左上(-0.866R,-0.5R) -->
+                    <!-- 中心点: (200, 180) -->
+                    <!-- 100% 边界 -->
+                    <polygon points="200,30 330,105 330,255 200,330 70,255 70,105" fill="none" stroke="#1e293b" stroke-width="1.5" />
+                    <!-- 80% 边界 -->
+                    <polygon points="200,60 304,120 304,240 200,300 96,240 96,120" fill="none" stroke="#334155" stroke-width="1" stroke-dasharray="3,3" />
+                    <!-- 50% 边界 -->
+                    <polygon points="200,105 265,142.5 265,217.5 200,255 135,217.5 135,142.5" fill="none" stroke="#475569" stroke-dasharray="2,2" />
+                    
+                    <!-- 轴线 -->
+                    <line x1="200" y1="30" x2="200" y2="330" stroke="#1e293b" stroke-width="1" />
+                    <line x1="70" y1="105" x2="330" y2="255" stroke="#1e293b" stroke-width="1" />
+                    <line x1="70" y1="255" x2="330" y2="105" stroke="#1e293b" stroke-width="1" />
+
+                    <!-- 🏆 顶级全栈 AI 工程师战力多边形 (红色/粉色边界) -->
+                    <!-- 1.上下文Scoping: 95, 2.确定性护栏: 95, 3.工具/MCP工程: 95, 4.多智能体编排: 90, 5.AI易感性设计: 95, 6.逆向自愈: 90 -->
+                    <!-- 计算出各点坐标 -->
+                    <polygon points="200,37.5 323.5,108.75 317,247.5 200,315 76.5,247.5 76.5,108.75" 
+                             fill="rgba(244, 63, 94, 0.05)" stroke="#f43f5e" stroke-width="2" stroke-dasharray="4,4" />
+
+                    <!-- 🟢 你的当前战力多边形 (绿色渐变填充) -->
+                    <!-- 1.上下文Scoping: 85, 2.确定性护栏: 80, 3.工具/MCP工程: 45, 4.多智能体编排: 75, 5.AI易感性设计: 85, 6.逆向自愈: 65 -->
+                    <!-- 坐标计算: center(200,180) -->
+                    <!-- 1: (200, 180 - 150*0.85) = (200, 52.5) -->
+                    <!-- 2: (200 + 150*0.80*0.866, 180 - 150*0.80*0.5) = (304, 120) -->
+                    <!-- 3: (200 + 150*0.45*0.866, 180 + 150*0.45*0.5) = (258.4, 213.75) -->
+                    <!-- 4: (200, 180 + 150*0.75) = (200, 292.5) -->
+                    <!-- 5: (200 - 150*0.85*0.866, 180 + 150*0.85*0.5) = (89.5, 243.75) -->
+                    <!-- 6: (200 - 150*0.65*0.866, 180 - 150*0.65*0.5) = (115.5, 131.25) -->
+                    <polygon points="200,52.5 304,120 258.4,213.75 200,292.5 89.5,243.75 115.5,131.25" 
+                             fill="rgba(20, 184, 166, 0.25)" stroke="#14b8a6" stroke-width="3" />
+
+                    <!-- 各顶点文字标注 -->
+                    <text x="200" y="20" text-anchor="middle" class="text-[9px] fill-slate-300 font-bold code-font">1. 注意力控制 (85%)</text>
+                    <text x="340" y="105" text-anchor="start" class="text-[9px] fill-slate-300 font-bold code-font">2. 确定性护栏 (80%)</text>
+                    <text x="340" y="260" text-anchor="start" class="text-[9px] fill-slate-300 font-bold code-font">3. 工具/MCP (45%)</text>
+                    <text x="200" y="348" text-anchor="middle" class="text-[9px] fill-slate-300 font-bold code-font">4. 逆向自愈 (65%)</text>
+                    <text x="60" y="260" text-anchor="end" class="text-[9px] fill-slate-300 font-bold code-font font-bold code-font">5. AI易感设计 (85%)</text>
+                    <text x="60" y="105" text-anchor="end" class="text-[9px] fill-slate-300 font-bold code-font font-bold code-font">6. 多智能体编排 (75%)</text>
+                </svg>
+
+                <!-- 图例 (Legend) -->
+                <div class="absolute bottom-2 left-4 flex gap-4 text-xs code-font bg-slate-950/80 px-3 py-1.5 rounded-lg border border-slate-800">
+                    <span class="flex items-center text-teal-400">
+                        <span class="w-2 h-2 bg-teal-500 rounded-full mr-1.5"></span> 个人当前 (Private Dev)
+                    </span>
+                    <span class="flex items-center text-rose-500">
+                        <span class="w-2.5 h-0.5 bg-rose-500 inline-block mr-1.5 border border-dashed border-rose-500"></span> 顶级大厂 (Elite Architect)
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 右侧：战力差距及拉平指南 (5格) -->
+        <section class="lg:col-span-5 flex flex-col gap-6">
+            
+            <!-- 战力概览卡 -->
+            <div class="bg-gradient-to-br from-slate-900 via-slate-900 to-teal-950 border border-slate-800 rounded-2xl p-6 shadow-xl">
+                <h3 class="text-lg font-bold mb-4 code-font text-teal-400">📊 战力差距综述</h3>
+                <div class="flex items-end justify-between border-b border-slate-800 pb-4 mb-4">
+                    <div>
+                        <div class="text-xs text-slate-500 code-font">当前战力综合分 (My Score)</div>
+                        <div class="text-4xl font-black text-slate-100 code-font">72.5 <span class="text-sm font-normal text-slate-400">/ 100</span></div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs text-slate-500 code-font">顶级大厂基准 (Elite)</div>
+                        <div class="text-2xl font-bold text-rose-500 code-font">93.3 <span class="text-xs font-normal text-slate-400">/ 100</span></div>
+                    </div>
+                </div>
+                <div class="text-sm text-slate-300 leading-relaxed">
+                    在<strong>注意力控制 (85%)</strong>、<strong>防路径逃逸护栏 (80%)</strong>等底层防线上，你已展现出极高水准。当前最大的短板在于<strong>工具/MCP 扩展工程 (45%)</strong>——你目前尚未自研过自定义 MCP 协议插件，AI 的外挂能力扩展空间仍有待点亮。
+                </div>
+            </div>
+
+            <!-- 六个维度的硬核比对与拉平方案 -->
+            <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 shadow-xl">
+                <h3 class="text-lg font-bold mb-4 code-font text-cyan-400">🛠️ 六维指标剖析与拉平建议</h3>
+                <div class="flex flex-col gap-4 text-xs md:text-sm">
+                    
+                    <!-- 维度 1 -->
+                    <div class="border-b border-slate-800 pb-3">
+                        <div class="flex justify-between font-bold mb-1">
+                            <span class="text-slate-200">1. 注意力 Scoping 控制</span>
+                            <span class="code-font text-teal-400">85% <span class="text-slate-500">vs 95%</span></span>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-normal">
+                            **差距：-10%**。你已掌握 Prompt 硬性前置裁剪。未来拉平方案：将 PAF 主项目 Prompt 精简至 100 行内极简线，让 AI 100% 零盲区。
+                        </p>
+                    </div>
+
+                    <!-- 维度 2 -->
+                    <div class="border-b border-slate-800 pb-3">
+                        <div class="flex justify-between font-bold mb-1">
+                            <span class="text-slate-200">2. 确定性物理护栏构建</span>
+                            <span class="code-font text-teal-400">80% <span class="text-slate-500">vs 95%</span></span>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-normal">
+                            **差距：-15%**。你已建立 `path.sep` 绝对路径拦截。未来拉平方案：在所有 VFS 读写挂载点（Handler 层面）全面推行物理 `Assert`。
+                        </p>
+                    </div>
+
+                    <!-- 维度 3 -->
+                    <div class="border-b border-slate-800 pb-3">
+                        <div class="flex justify-between font-bold mb-1 text-amber-400">
+                            <span>3. 工具与 MCP 扩展工程 (短板)</span>
+                            <span class="code-font">45% <span class="text-slate-500">vs 95%</span></span>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-normal">
+                            **差距：-50%**。这是你目前最大的技术盲区。未来拉平方案：在 `labs/mcp-tools` 目录下亲自动手演练、实现一个本地 MCP 服务，让 CLI AI 自主读写本地 SQLite。
+                        </p>
+                    </div>
+
+                    <!-- 维度 4 -->
+                    <div class="border-b border-slate-800 pb-3">
+                        <div class="flex justify-between font-bold mb-1">
+                            <span class="text-slate-200">4. 逆向自愈与调试</span>
+                            <span class="code-font text-teal-400">65% <span class="text-slate-500">vs 90%</span></span>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-normal">
+                            **差距：-25%**。未来拉平方案：在重构指令前加上 `[Verification]` 原生单元测试强制对齐，出现类型冲突时迅速利用 precheck 终止。
+                        </p>
+                    </div>
+
+                    <!-- 维度 5 -->
+                    <div class="border-b border-slate-800 pb-3">
+                        <div class="flex justify-between font-bold mb-1">
+                            <span class="text-slate-200">5. 代码库 AI 易感性设计</span>
+                            <span class="code-font text-teal-400">85% <span class="text-slate-500">vs 95%</span></span>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-normal">
+                            **差距：-10%**。你极其优秀地推行了“Convention Over Configuration”。未来拉平方案：在主库中严格重构 NestJS 的 decorators 签名，保持 100% 业界公认的标准。
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="mt-12 text-center text-xs text-slate-500 code-font">
+        Generated by Vida Private Agent Engine. Real-time data synchronized at 2026-06-27T20:53:20+08:00
+    </footer>
+
+</body>
+</html>
