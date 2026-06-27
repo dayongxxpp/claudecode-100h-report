@@ -28,7 +28,61 @@
 
 ---
 
-## 🧪 第二部分：全栈 AI 工程师的三大实用主义心智模型 (Mental Models)
+## 🎓 第二部分：三维训练范式与真实学习痕迹 (The Three Training Paradigms)
+
+全栈 AI 工程师的成长不是凭空发生的，本实验室通过以下**三大互补的训练范式**，将你的每一次对话、每一次 Bug 修复和每一个大厂优秀案例，转化为可量化、可追溯的学习痕迹（Traces）：
+
+```text
+               ┌────────────────────────────────────────────────────────┐
+               │                                                        │
+               │                   🎓 三维训练飞轮                        │
+               │                                                        │
+               └──────────────────────────┬─────────────────────────────┘
+                                          │
+                  ┌───────────────────────┼───────────────────────┐
+                  ▼                       ▼                       ▼
+         【1. 问答对话纠偏】      【2. 实操破坏演练】      【3. 头部大厂对齐】
+         (Dialogue Coaching)     (Hands-on Sandbox)     (Big-Tech Alignment)
+                  │                       │                       │
+                  ▼                       ▼                       ▼
+         Before-After 指令       /labs 中的破坏性代码     Cosmos / Anthropic 
+         对齐、注意力压缩         自测、Assert 边界卡死    最佳工程架构解耦
+```
+
+### 1. 💬 问答对话训练 (Dialogue Coaching) — 纠正你的指令直觉
+*   **训练机制**：通过白天你与 Vida 的对话，AI 作为“指令教练（Coaching）”，捕捉你输入 Prompt 中的发散点、模糊指代或冗余规则，通过 **Before ➔ After 对照重构**，锻炼你对“大模型注意力分配机制（Attention Allocation）”的物理直觉。
+*   **真实训练案例（2026-06-27 19:40 对话）**：
+    *   *你的原始输入*：`遍历仓库和github，理解paf系统开发项目，准备系统验证和修复开发行动`
+    *   *诊断痛点*：未限定 Scope，AI 会无意义地递归扫描 `dist/` 与 `node_modules`，不仅极度缓慢，更会导致关键上下文被噪音淹没。
+    *   *Coaching 规范后输入*：
+        ```markdown
+        [Scope]
+        - 核心分析路径: apps/api/src/modules/valuation-qc/
+        - 忽略路径: dist, node_modules, .git
+        [Task]
+        - 快速理清该目录下 VFS 挂载点规则，并用不超过 300 字列出 VFS Phase 1 当前阻断。
+        ```
+    *   *学习痕迹归档*：此类 Before-After 纠偏会被 Tracker 自动提纯并追加写入 **`logs/YYYY-MM-DD-retro.md` 的第三章节**，成为你随时可用的“黄金指令弹药库”。
+
+### 2. 🧪 实践操作训练 (Hands-on Sandbox Training) — 肌肉记忆与破坏性测试
+*   **训练机制**：AI 领域最致命的软肋是“纸上谈兵”。本范式要求你必须在本地 `labs/` 目录下，亲自编写并运行“具备破坏性”的测试代码，以观察 AI 代理的实际边界。
+*   **真实训练案例（2026-06-27 19:10 VFS 溢出重构）**：
+    *   *实操演练*：你直接在 `policy-guardrail.service.ts` 中手写了 `path.sep` 的物理防线，强制对合成路径进行 `startsWith` 的断言校验。
+    *   *破坏性测试*：故意让 AI 写入恶意绝对路径 `/paf/regulations/../../../etc/passwd`，观察 AI 面对本地系统抛出 `regulations path escaped root` 报错时的连锁反应。
+    *   *实用主义收获*：通过这一次在终端执行 `pnpm test` 的真实报错，你深度理解并固化了**“AI 是概率性的（不可信），护栏必须是确定性的（必须由手写代码死守）”**这一全栈 AI 工程师的至高心智模型。
+    *   *学习痕迹归档*：代码直接保存在 **`labs/vfs-playground/`**，作为你个人 GitHub 上的极客作品集（Portfolio）。
+
+### 3. 🏦 头部大厂生产案例对齐 (Big-Tech First-Principles Alignment) — 降维击碎行业红线
+*   **训练机制**：拒绝闭门造车，时刻追踪、解构和对齐行业顶尖 AI 大厂（如 **Anthropic**、**Augment Code (Cosmos)**、**OpenAI**、**Supabase**）在处理极度复杂工程、大规模代码重构与企业隐私红线时的“第一性原理”设计模式。
+*   **真实训练案例（2026-06-27 20:10 隐私红线战役）**：
+    *   *大厂做法参考*：我们深入解构了 **Augment Code 的 Cosmos 状态引擎**，其采用“Convention over configuration（约定大于配置）”与非侵入式插件（Tool-based Agentic Probe）的设计，在享有了 OS 级多维感知的同时，保持核心业务系统 100% 的纯粹与稳健。
+    *   *落地应用*：你果断推翻了“将前台录屏/OCR 代码塞进核心业务”的愚蠢方案。转而设计了 **`OpenChronicleDailySyncListener`（事件监听）** 与 **`OpenChronicleAdapterService`（只读隐藏 SQLite 会话表）**。
+    *   *成效*：完美对齐了 Cosmos 的非侵入式架构，不仅保证了 PAF 100% 的代码整洁，而且通过 **Strict Session-Only Scoping（会话沙盒限定）** 降维击碎了金融行业最畏惧的屏幕录制隐私红线！
+    *   *学习痕迹归档*：方法论沉淀在 **`claudecode-100-hours-report.md` 的第一部分**。
+
+---
+
+## 🧪 第三部分：全栈 AI 工程师的三大实用主义心智模型 (Mental Models)
 
 为了让你能瞬间记忆并灵活应用，我们将复杂的 AI 工程学转化为以下三个开箱即用的极简“心智模型”：
 
