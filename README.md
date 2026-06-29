@@ -14,7 +14,9 @@ claudecode-100h-report/
 ├── README.md                           # 🌟 实验室控制台：成长路线图、知识索引与每日看板
 ├── claudecode-100-hours-report.md      # 🏆 核心里程碑：100小时实战总结与方法论白皮书
 ├── logs/                               # 📅 每日复盘日志：按天归档的原子级操作、报错与纠偏日记
-│   └── 2026-06-27-retro.md             # └── 示例：今天的实战复盘与防坑自检
+│   ├── 2026-06-26-retro.md             # ├── Cosmos 架构大厂对齐与非侵入式 Context 引擎
+│   ├── 2026-06-27-retro.md             # ├── Agent-VFS 路径逃逸防守与 Session 隔离
+│   └── 2026-06-28-retro.md             # └── IntentRouter 路由错乱拦截与 Cosmos 审计闭环
 ├── labs/                               # 🧪 AI-Native 实验沙盒：用于演练、测试和开发的原子级代码
 │   ├── mcp-tools/                      #     ├── 自制 Model Context Protocol (MCP) 扩展测试
 │   ├── vfs-playground/                 #     ├── 虚拟文件系统 (VFS) 边界与路径隔离测试
@@ -45,8 +47,11 @@ claudecode-100h-report/
 ## 📊 个人成长看板 (Developer Dashboard)
 
 *   **当前段位**：`AI-Native Developer (L3)` ➔ 目标：`Full-Stack AI Architect (L5)`
-*   **累计实战时长**：`~12 Hours` (Progress: ▓░░░░░░░ 12%)
-*   **今日战役**：[2026-06-27 VFS 边界防御与只读 Session 隔离](./logs/2026-06-27-retro.md)
+*   **累计实战时长**：`~36 Hours` (Progress: ▓▓▓░░░░░ 36%)
+*   **近期战役**：
+    *   📅 [2026-06-26 Cosmos 架构大厂对齐与非侵入式 Context 引擎](./logs/2026-06-26-retro.md)
+    *   📅 [2026-06-27 Agent-VFS 路径逃逸防守与 Session 隔离](./logs/2026-06-27-retro.md)
+    *   📅 [2026-06-28 IntentRouter 路由错乱拦截与 Cosmos 审计闭环](./logs/2026-06-28-retro.md)
 *   **核心装备库**：
     *   🛡️ **VFS 沙盒路径过滤**：在 `PolicyGuardrailService` 中实现路径防逃逸兜底。
     *   🔒 **SQLITE_OPEN_READONLY**：非侵入式读取本地 `memory.db` 会话历史。
