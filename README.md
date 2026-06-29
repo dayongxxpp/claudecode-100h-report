@@ -13,7 +13,7 @@
 claudecode-100h-report/
 ├── README.md                           # 🌟 实验室控制台：成长路线图、知识索引与每日看板
 ├── claudecode-100-hours-report.md      # 🏆 核心里程碑：100小时实战总结与方法论白皮书
-├── logs/                               # 📅 每日复盘日志：按天归档的原子级操作、报错与纠偏日记
+├── logs/                               # 📓 AI Co-Pilot 极客共创日记：按天归档的开发心路、架构决策与纠偏日志
 │   ├── 2026-06-26-retro.md             # ├── Cosmos 架构大厂对齐与非侵入式 Context 引擎
 │   ├── 2026-06-27-retro.md             # ├── Agent-VFS 路径逃逸防守与 Session 隔离
 │   └── 2026-06-28-retro.md             # └── IntentRouter 路由错乱拦截与 Cosmos 审计闭环
@@ -21,16 +21,16 @@ claudecode-100h-report/
 │   ├── mcp-tools/                      #     ├── 自制 Model Context Protocol (MCP) 扩展测试
 │   ├── vfs-playground/                 #     ├── 虚拟文件系统 (VFS) 边界与路径隔离测试
 │   └── prompt-templates/               #     └── 高内聚 System Prompt 预算裁剪与上下文压缩演练
-└── templates/                          # 📋 提效工具箱：开箱即用的 .clauderules, .cursorrules 模板
+└── templates/                          # 📋 提效工具箱：包含标准共创日记模板 (co-creation-diary-template.md)
 ```
 
 ---
 
 ## 🎯 全栈 AI 工程师四大修炼维度
 
-### 1. 📅 [Daily Logs (每日实战复盘)](./logs/)
-*   **记录真相**：由后台 Tracker (ID 10) 于每天 23:00 自动抓取你的历史会话（Dialogue Sessions），自动生成并 Commit 推送。
-*   **重点沉淀**：不记录流水账，只归档**高频/亮点 Prompt**、**AI 失败模式 (Failure Modes)** 以及**就地单测通过率**。
+### 1. 📓 [Daily Co-Creation Diary (AI 共创极客日记)](./logs/)
+*   **日记宗旨**：像记日记一样按天记录。完整抓取你在 PAF 研制过程中的**开发单元、架构抉择、黄金 Prompt**。
+*   **互动反馈**：包含 AI 助理对你的操作进行的**客观毒舌评价、Before ➔ After 纠偏以及落地目标的最终单元测试通过情况**。
 
 ### 2. 🧪 [Labs & Sandboxes (演练沙盒)](./labs/)
 *   **动手演练**：全栈 AI 工程师的核心竞争力是**为 AI 编写工具**（如 MCP、VFS、Agent Triggers）。
