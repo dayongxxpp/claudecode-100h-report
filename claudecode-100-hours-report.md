@@ -62,7 +62,7 @@
         [Task]
         - 快速理清该目录下 VFS 挂载点规则，并用不超过 300 字列出 VFS Phase 1 当前阻断。
         ```
-    *   *学习痕迹归档*：此类 Before-After 纠偏会被 Tracker 自动提纯并追加写入 **`logs/YYYY-MM-DD-retro.md` 的第三章节**，成为你随时可用的“黄金指令弹药库”。
+    *   *学习痕迹归档*：此类 Before-After 纠偏会被 Tracker 自动提纯，并采用 `templates/co-creation-diary-template.md` 极客日记的标准格式，追加写入 **`logs/YYYY-MM-DD-retro.md`** 共创日记中，成为你随时可用的“黄金指令弹药库”与技术作品集。
 
 ### 2. 🧪 实践操作训练 (Hands-on Sandbox Training) — 肌肉记忆与破坏性测试
 *   **训练机制**：AI 领域最致命的软肋是“纸上谈兵”。本范式要求你必须在本地 `labs/` 目录下，亲自编写并运行“具备破坏性”的测试代码，以观察 AI 代理的实际边界。
